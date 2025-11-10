@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "red", "id": "Vivianne Miedema", "label": "Vivianne Miedema", "shape": "dot", "size": 15, "title": "Vivianne Miedema"}, {"color": "red", "id": "Beth Mead", "label": "Beth Mead", "shape": "dot", "size": 15, "title": "Beth Mead"}, {"color": "red", "id": "Frida Maanum", "label": "Frida Maanum", "shape": "dot", "size": 15, "title": "Frida Maanum"}, {"color": "gray", "id": "Emma Lennartsson", "label": "Emma Lennartsson", "shape": "dot", "size": 15, "title": "Emma Lennartsson"}, {"color": "lightblue", "id": "Kenza Dali", "label": "Kenza Dali", "shape": "dot", "size": 15, "title": "Kenza Dali"}, {"color": "lightblue", "id": "Maz Pacheco", "label": "Maz Pacheco", "shape": "dot", "size": 15, "title": "Maz Pacheco"}, {"color": "lightblue", "id": "Rachel Daly", "label": "Rachel Daly", "shape": "dot", "size": 15, "title": "Rachel Daly"}, {"color": "gray", "id": "Millie Turner", "label": "Millie Turner", "shape": "dot", "size": 15, "title": "Millie Turner"}, {"color": "gray", "id": "Ingrid Engen", "label": "Ingrid Engen", "shape": "dot", "size": 15, "title": "Ingrid Engen"}, {"color": "gray", "id": "Mapi Leon", "label": "Mapi Leon", "shape": "dot", "size": 15, "title": "Mapi Leon"}, {"color": "blue", "id": "Jess Carter", "label": "Jess Carter", "shape": "dot", "size": 15, "title": "Jess Carter"}, {"color": "gray", "id": "Ann-Katrin Berger", "label": "Ann-Katrin Berger", "shape": "dot", "size": 15, "title": "Ann-Katrin Berger"}, {"color": "blue", "id": "Magdalena Eriksson", "label": "Magdalena Eriksson", "shape": "dot", "size": 15, "title": "Magdalena Eriksson"}, {"color": "blue", "id": "Pernille Harder", "label": "Pernille Harder", "shape": "dot", "size": 15, "title": "Pernille Harder"}, {"color": "gray", "id": "Ella Stevens", "label": "Ella Stevens", "shape": "dot", "size": 15, "title": "Ella Stevens"}, {"color": "gray", "id": "Tatum Milazzo", "label": "Tatum Milazzo", "shape": "dot", "size": 15, "title": "Tatum Milazzo"}, {"color": "gray", "id": "Laura Strik", "label": "Laura Strik", "shape": "dot", "size": 15, "title": "Laura Strik"}, {"color": "gray", "id": "Kerstin Casparij", "label": "Kerstin Casparij", "shape": "dot", "size": 15, "title": "Kerstin Casparij"}, {"color": "gray", "id": "Nathalie Bj\u00f6rn", "label": "Nathalie Bj\u00f6rn", "shape": "dot", "size": 15, "title": "Nathalie Bj\u00f6rn"}, {"color": "gray", "id": "Aurora Galli", "label": "Aurora Galli", "shape": "dot", "size": 15, "title": "Aurora Galli"}, {"color": "gray", "id": "Kristie Mewis", "label": "Kristie Mewis", "shape": "dot", "size": 15, "title": "Kristie Mewis"}, {"color": "blue", "id": "Sam Kerr", "label": "Sam Kerr", "shape": "dot", "size": 15, "title": "Sam Kerr"}, {"color": "gray", "id": "Linda Sembrandt", "label": "Linda Sembrandt", "shape": "dot", "size": 15, "title": "Linda Sembrandt"}, {"color": "gray", "id": "Lisa Boattin", "label": "Lisa Boattin", "shape": "dot", "size": 15, "title": "Lisa Boattin"}, {"color": "gray", "id": "Ellie Carpenter", "label": "Ellie Carpenter", "shape": "dot", "size": 15, "title": "Ellie Carpenter"}, {"color": "gray", "id": "Dani\u00eblle van de Donk", "label": "Dani\u00eblle van de Donk", "shape": "dot", "size": 15, "title": "Dani\u00eblle van de Donk"}, {"color": "gray", "id": "Christen Westphal", "label": "Christen Westphal", "shape": "dot", "size": 15, "title": "Christen Westphal"}, {"color": "gray", "id": "Maddie Pogarch", "label": "Maddie Pogarch", "shape": "dot", "size": 15, "title": "Maddie Pogarch"}, {"color": "gray", "id": "Kyah Simon", "label": "Kyah Simon", "shape": "dot", "size": 15, "title": "Kyah Simon"}, {"color": "gray", "id": "Faye Bryson", "label": "Faye Bryson", "shape": "dot", "size": 15, "title": "Faye Bryson"}, {"color": "darkred", "id": "Mackenzie Arnold", "label": "Mackenzie Arnold", "shape": "dot", "size": 15, "title": "Mackenzie Arnold"}, {"color": "darkred", "id": "Kristy Smith", "label": "Kristy Smith", "shape": "dot", "size": 15, "title": "Kristy Smith"}, {"color": "darkred", "id": "Emma Harries", "label": "Emma Harries", "shape": "dot", "size": 15, "title": "Emma Harries"}, {"color": "gray", "id": "Ellie Brazil", "label": "Ellie Brazil", "shape": "dot", "size": 15, "title": "Ellie Brazil"}, {"color": "gray", "id": "Lucy Bronze", "label": "Lucy Bronze", "shape": "dot", "size": 15, "title": "Lucy Bronze"}, {"color": "gray", "id": "Kiera Walsh", "label": "Kiera Walsh", "shape": "dot", "size": 15, "title": "Kiera Walsh"}, {"color": "gray", "id": "Giada Greggi", "label": "Giada Greggi", "shape": "dot", "size": 15, "title": "Giada Greggi"}, {"color": "gray", "id": "Rachele Baldi", "label": "Rachele Baldi", "shape": "dot", "size": 15, "title": "Rachele Baldi"}, {"color": "gray", "id": "Nikki Stanton", "label": "Nikki Stanton", "shape": "dot", "size": 15, "title": "Nikki Stanton"}, {"color": "gray", "id": "Rachael Rapinoe", "label": "Rachael Rapinoe", "shape": "dot", "size": 15, "title": "Rachael Rapinoe"}, {"color": "gray", "id": "Katrina Gorry", "label": "Katrina Gorry", "shape": "dot", "size": 15, "title": "Katrina Gorry"}, {"color": "gray", "id": "Clara Markstedt", "label": "Clara Markstedt", "shape": "dot", "size": 15, "title": "Clara Markstedt"}, {"color": "gray", "id": "Jess Fishlock", "label": "Jess Fishlock", "shape": "dot", "size": 15, "title": "Jess Fishlock"}, {"color": "gray", "id": "Tziarra King", "label": "Tziarra King", "shape": "dot", "size": 15, "title": "Tziarra King"}, {"color": "red", "id": "Caitlin Foord", "label": "Caitlin Foord", "shape": "dot", "size": 15, "title": "Caitlin Foord"}, {"color": "red", "id": "Lia W\u00e4lti", "label": "Lia W\u00e4lti", "shape": "dot", "size": 15, "title": "Lia W\u00e4lti"}, {"color": "gray", "id": "Tabea Kemme", "label": "Tabea Kemme", "shape": "dot", "size": 15, "title": "Tabea Kemme"}, {"color": "red", "id": "Katie McCabe", "label": "Katie McCabe", "shape": "dot", "size": 15, "title": "Katie McCabe"}, {"color": "lightblue", "id": "Ruesha Littlejohn", "label": "Ruesha Littlejohn", "shape": "dot", "size": 15, "title": "Ruesha Littlejohn"}, {"color": "darkred", "id": "Lisa Evans", "label": "Lisa Evans", "shape": "dot", "size": 15, "title": "Lisa Evans"}, {"color": "lightblue", "id": "Jordan Nobbs", "label": "Jordan Nobbs", "shape": "dot", "size": 15, "title": "Jordan Nobbs"}, {"color": "red", "id": "Leah Williamson", "label": "Leah Williamson", "shape": "dot", "size": 15, "title": "Leah Williamson"}, {"color": "blue", "id": "Millie Bright", "label": "Millie Bright", "shape": "dot", "size": 15, "title": "Millie Bright"}, {"color": "lightblue", "id": "Alisha Lehmann", "label": "Alisha Lehmann", "shape": "dot", "size": 15, "title": "Alisha Lehmann"}, {"color": "gray", "id": "Ramona Bachmann", "label": "Ramona Bachmann", "shape": "dot", "size": 15, "title": "Ramona Bachmann"}, {"color": "gray", "id": "Lauren Barnes", "label": "Lauren Barnes", "shape": "dot", "size": 15, "title": "Lauren Barnes"}, {"color": "gray", "id": "Hayley Raso", "label": "Hayley Raso", "shape": "dot", "size": 15, "title": "Hayley Raso"}, {"color": "gray", "id": "Jenna McCormick", "label": "Jenna McCormick", "shape": "dot", "size": 15, "title": "Jenna McCormick"}, {"color": "gray", "id": "Chloe Logarzo", "label": "Chloe Logarzo", "shape": "dot", "size": 15, "title": "Chloe Logarzo"}, {"color": "gray", "id": "McKenzie Berryhill", "label": "McKenzie Berryhill", "shape": "dot", "size": 15, "title": "McKenzie Berryhill"}]);
+                  edges = new vis.DataSet([{"color": "blue", "from": "Vivianne Miedema", "title": "Dating", "to": "Beth Mead"}, {"color": "blue", "from": "Frida Maanum", "title": "Dating", "to": "Emma Lennartsson"}, {"color": "blue", "from": "Kenza Dali", "title": "Dating", "to": "Maz Pacheco"}, {"color": "blue", "from": "Rachel Daly", "title": "Dating", "to": "Millie Turner"}, {"color": "blue", "from": "Ingrid Engen", "title": "Dating", "to": "Mapi Leon"}, {"color": "blue", "from": "Jess Carter", "title": "Dating", "to": "Ann-Katrin Berger"}, {"color": "blue", "from": "Magdalena Eriksson", "title": "Dating", "to": "Pernille Harder"}, {"color": "blue", "from": "Ella Stevens", "title": "Dating", "to": "Tatum Milazzo"}, {"color": "blue", "from": "Laura Strik", "title": "Dating", "to": "Kerstin Casparij"}, {"color": "blue", "from": "Nathalie Bj\u00f6rn", "title": "Dating", "to": "Aurora Galli"}, {"color": "blue", "from": "Kristie Mewis", "title": "Dating", "to": "Sam Kerr"}, {"color": "blue", "from": "Linda Sembrandt", "title": "Dating", "to": "Lisa Boattin"}, {"color": "blue", "from": "Ellie Carpenter", "title": "Dating", "to": "Dani\u00eblle van de Donk"}, {"color": "blue", "from": "Christen Westphal", "title": "Dating", "to": "Maddie Pogarch"}, {"color": "blue", "from": "Kyah Simon", "title": "Dating", "to": "Faye Bryson"}, {"color": "blue", "from": "Mackenzie Arnold", "title": "Dating", "to": "Kristy Smith"}, {"color": "blue", "from": "Emma Harries", "title": "Dating", "to": "Ellie Brazil"}, {"color": "blue", "from": "Lucy Bronze", "title": "Dating", "to": "Kiera Walsh"}, {"color": "blue", "from": "Giada Greggi", "title": "Dating", "to": "Rachele Baldi"}, {"color": "blue", "from": "Nikki Stanton", "title": "Dating", "to": "Rachael Rapinoe"}, {"color": "green", "from": "Katrina Gorry", "title": "Engaged", "to": "Clara Markstedt"}, {"color": "green", "from": "Jess Fishlock", "title": "Engaged", "to": "Tziarra King"}, {"color": "red", "from": "Caitlin Foord", "title": "Exes", "to": "Lia W\u00e4lti"}, {"color": "red", "from": "Beth Mead", "title": "Exes", "to": "Dani\u00eblle van de Donk"}, {"color": "red", "from": "Tabea Kemme", "title": "Exes", "to": "Lia W\u00e4lti"}, {"color": "red", "from": "Katie McCabe", "title": "Exes", "to": "Ruesha Littlejohn"}, {"color": "red", "from": "Vivianne Miedema", "title": "Exes", "to": "Lisa Evans"}, {"color": "red", "from": "Rachel Daly", "title": "Exes", "to": "Kristie Mewis"}, {"color": "red", "from": "Jordan Nobbs", "title": "Exes", "to": "Leah Williamson"}, {"color": "red", "from": "Rachel Daly", "title": "Exes", "to": "Millie Bright"}, {"color": "red", "from": "Alisha Lehmann", "title": "Exes", "to": "Ramona Bachmann"}, {"color": "red", "from": "Jess Fishlock", "title": "Exes", "to": "Lauren Barnes"}, {"color": "red", "from": "Sam Kerr", "title": "Exes", "to": "Nikki Stanton"}, {"color": "orange", "from": "Katie McCabe", "title": "Rumored", "to": "Caitlin Foord"}, {"color": "red", "from": "Hayley Raso", "title": "Exes", "to": "Jenna McCormick"}, {"color": "green", "from": "Chloe Logarzo", "title": "Engaged", "to": "McKenzie Berryhill"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+                    "configure": {
+                        "enabled": false
+                    },
+                    "edges": {
+                        "color": {
+                            "inherit": true
+                        },
+                        "smooth": {
+                            "enabled": true,
+                            "type": "dynamic"
+                        }
+                    },
+                    "interaction": {
+                        "dragNodes": true,
+                        "hideEdgesOnDrag": false,
+                        "hideNodesOnDrag": false
+                    },
+                    "physics": {
+                        "barnesHut": {
+                            "avoidOverlap": 0,
+                            "centralGravity": 0.3,
+                            "damping": 0.09,
+                            "gravitationalConstant": -8000,
+                            "springConstant": 0.001,
+                            "springLength": 100
+                        },
+                        "enabled": true,
+                        "repulsion": {
+                            "centralGravity": 0.2,
+                            "damping": 0.09,
+                            "nodeDistance": 70,
+                            "springConstant": 0.05,
+                            "springLength": 150
+                        },
+                        "solver": "repulsion",
+                        "stabilization": {
+                            "enabled": true,
+                            "fit": true,
+                            "iterations": 1000,
+                            "onlyDynamicEdges": false,
+                            "updateInterval": 50
+                        }
+                    }
+                };            
+
+                  network = new vis.Network(container, data, options); 
+
+                  return network;
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

@@ -16,7 +16,7 @@ header{
   font-family: Work Sans;
   color: #fff;
   min-height: 20vh;
-  padding: 1em;
+  padding: 01em;
   /*display: flex;*/
 }
 
@@ -25,7 +25,7 @@ main {
   
   grid-gap: 20px;
 
-  justify-items: center;
+  /* justify-items: center; */
   justify-content: center;
   align-items: stretch;
   align-content: center;
@@ -47,10 +47,9 @@ h1 {
 
 h2 {
   font-family: Poppins;
-  font-size: calc(1em + 2vw);
-  padding-bottom: .5em;
-  line-height: 1;
-  color:#fff;
+  font-size: calc(0.75em + 2vw);
+  /* color:#fff; */
+  margin-bottom: 0em;
 }
 
 h3 {
@@ -76,8 +75,11 @@ a:hover{
   color:#c7c4ff;
 }
 
+
+
 img {
   width: 100%;
+  max-width:100%;
   height: 50vh;
   object-fit: cover;
 }
@@ -85,6 +87,23 @@ img {
 li {
     list-style: none;
     display: list-item;
+}
+
+p {
+  font-family:Poppins;
+}
+
+.article {
+  color:#111;
+  margin:2em;
+  padding:1em;
+  background-color: #fff;
+}
+
+.back-arrow{
+  align-content: left;
+  padding: 0.5rem;
+  margin:0rem;
 }
 
 .box {
@@ -111,6 +130,7 @@ li {
 .container {
 /*  min-width: 500px; */
   margin: auto;
+
 }
 
 .copyright {
@@ -135,6 +155,10 @@ li {
 }
 .nav-item{
     margin:0.5em;
+}
+
+.section-title {
+  color:#fff;
 }
 
 .wrapper {
@@ -194,7 +218,6 @@ li {
   max-width: 20rem;
 }
 
-
 footer {
   margin-top: 44px;
 }
@@ -203,4 +226,47 @@ footer {
   main {
     grid-template-columns: 1fr;
   }
+}
+
+.card{
+    margin: 0 auto;
+}
+
+.scattergrid{
+    display:grid;
+    gap:0rem;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    background-color:white;
+    padding:1rem;
+    border-radius:1em;
+
+}
+
+.scatter {
+  height:10em;
+  width:100%;
+  /* aspect-ratio:12/9; */
+}
+
+.web {
+    margin: 0 0;
+    aspect-ratio: 1.2;
+    width:100%;
+    /* min-width:500px; */
+    /* max-width:100%; */
+}
+
+@media only screen and (max-width: 768px){
+    body{
+        color:white;
+        font-size:10pt;
+        
+    }
+    .scattergrid{
+        padding:0rem;
+    }
+    .web{
+        aspect-ratio:0.7;
+        background-color: darkslategrey;
+    }
 }
