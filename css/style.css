@@ -15,14 +15,14 @@ header, footer {
 header{
   font-family: Work Sans;
   color: #fff;
-  min-height: 25vh;
+  min-height: 20vh;
   padding: 1em;
   /*display: flex;*/
 }
 
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(40%, 1fr) ) ;
+  
   grid-gap: 20px;
 
   justify-items: center;
@@ -30,6 +30,10 @@ main {
   align-items: stretch;
   align-content: center;
   margin: 0.5em;
+}
+
+section {
+  width: 100%;
 }
 
 h1 {
@@ -43,6 +47,14 @@ h1 {
 
 h2 {
   font-family: Poppins;
+  font-size: calc(1em + 2vw);
+  padding-bottom: .5em;
+  line-height: 1;
+  color:#fff;
+}
+
+h3 {
+  font-family: Poppins;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -51,10 +63,17 @@ h2 {
   padding: 10px 0px 10px 10px;
 }
 
+h4,h5, i {
+  font-family: Poppins;
+}
+
 a {
   text-decoration: none;
   font-family: Poppins;
   color: #eeeeee;
+}
+a:hover{
+  color:#c7c4ff;
 }
 
 img {
@@ -68,8 +87,30 @@ li {
     display: list-item;
 }
 
+.box {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+  /* width: 100%; */
+  /* max-width: 5rem; */
+  grid-gap:0.5em;
+  margin: 0.5em;
+  padding: 0.5em; 
+  background-color:#eeeeee;
+  border-radius:1em;
+}
+
 .box:hover{
   box-shadow: 5px 5px 5px #111;
+}
+
+.box-area {
+  display:grid;
+  margin:0.5em;
+  grid-template-columns: repeat(auto-fill, minmax(40%, 1fr) ) ;
+}
+
+.container {
+/*  min-width: 500px; */
+  margin: auto;
 }
 
 .copyright {
@@ -78,13 +119,18 @@ li {
   padding: 0.4em;
 }
 
+.ed{
+  margin:0em;
+  padding:0.5em;
+}
+
 .nav{
     display: flex;
     justify-content: flex-end;
 }
 .nav-bar {
     background-color: #9784ff;
-    margin: 0.5em;
+
     display: flex;
 }
 .nav-item{
@@ -130,11 +176,6 @@ li {
     top:1px;
 }
 
-.box {
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
-  width: 100%;
-  background-color:#eeeeee;
-}
 
 
 .description {
@@ -149,11 +190,10 @@ li {
   border-top: 1px solid #4a4a4a;
 }
 
-
-.container {
-/*  min-width: 500px; */
-  margin: auto;
+#profile-pic {
+  max-width: 20rem;
 }
+
 
 footer {
   margin-top: 44px;

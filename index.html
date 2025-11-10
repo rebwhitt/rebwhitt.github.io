@@ -15,7 +15,7 @@
 
   <body>
 
-    <div class="container">
+    <div>
 
       <header>
 
@@ -23,63 +23,71 @@
           Rebecca Whitten
         </h1>
         <p>
-          I'm a computational social scientist
+          Social scientist, web developer
         </p>
       </header>
         <nav class="nav-bar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a>Home</a>
+                    <a href="./index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a>Projects</a>
+                    <a href="#projects">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a>About</a>
+                    <a href="#about">About</a>
                 </li>
             </ul>
         </nav>
       <main>
-        <div class="box">
-          <a href="https://medium.com/@rawhitten/we-already-have-no-privacy-in-public-facebooks-new-smart-glasses-don-t-change-that-a445893e19eb">
+        <section id="projects">
+          <h2>Projects</h2>
+          <div class="container">
+            <div class="box">
+              <a href="https://www.osti.gov/servlets/purl/1879355">
+                <h3>Automated Performance Dashboard</h3>
+                <img src="images/eospac6_dashboard_screenshot.jpg">
+                <p class="description">
+                  Developed as part of an internship with Los Alamos National Laboratory. While the application itself is no longer
+                  under my purview, slides from the presentation I gave are available to view
+                </p>
+              </a>
+            </div>
+            <div class="box">
+            <a href="https://rlbergamasco.github.io/queer-hack-2020/">
+              <h3>Hackathon Project (React.js)</h3>
+              <img src="images/ReactGameScreenshot.jpg" />
+              <p class="description">
+                Before you go, take a look at this trivia game built in React and test your knowledge on the American healthcare system! </p>
+            </a>
+          </div>
+          </div>
+
+        </section>
+        <section id="about">
+          <h2>About Me</h2>
+          <div class="container">
+            <div class="box">
+              <h3>Education</h3>
+              <div class="ed">
+                <h4>Master of Arts, Sociology</h4>
+                <i>Colorado State University</i>
+              </div>
+              <div class="ed">
+                <h4>Bachelor of Science, Computer Science</h4>
+                <i>Virginia Tech</i>
+              </div>
+              <div class="ed">
+                <img id="profile-pic" src="./images/profile_pic.JPG" height="4em" width="2em">
+              </div>
+            </div>
+            <div class="box">
+              <h3>Links</h3>
+            </div>
             
-            <h2>Smart Glasses and Privacy in Public</h2>
+          </div>
 
-            <p class="description">
-              The rise in wearable technologies has understandably caused worry for many that privacy in public will be gone forever. But is the future of technology really any worse than the present?
-            </p>
-          </a>
-        </div>
-        <div class="box">
-          <a href="https://soundcloud.com/thomas-ramos-986285219/parasocial-1?si=441dfdcacd15429c9d9abf3409f96502&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
-            <h2>Parasocial Podcast</h2>
-            <p class="description">
-              Why is it that in today's climate many people prefer to stay inside on a Friday night watching their favorite Twitch streamer? Find out in this podcast as our group discusses the topic of parasocial relationships.
-            </p>
-          </a>
-        </div>
-        <div class="box">
-          <a href="https://youtu.be/BTAIwuxjbew">
-
-            <h2>A REAL Day in the Life</h2>
-            <p class="description">
-              Do you spend every day in glamorous coffee shops working at peak productivity? Neither do I. Come see a real day in my life in college.
-            </p>
-          </a>
-        </div>
-        <div class="box">
-
-          <a href="https://rlbergamasco.github.io/queer-hack-2020/">
-
-            <h2>Hackathon Project</h2>
-            <p class="description">
-              Before you go, take a look at this trivia game built in React and test your knowledge on the American healthcare system! </p>
-          </a>
-
-        </div>
-
-
-
+        </section>
       </main>
 
       <footer>
