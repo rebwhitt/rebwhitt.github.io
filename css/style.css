@@ -94,6 +94,11 @@ p {
   font-family:Poppins;
 }
 
+.about{
+  margin:0em;
+  padding:0.5em;
+}
+
 .article {
   color:#111;
   margin:2em;
@@ -122,6 +127,12 @@ p {
   box-shadow: 5px 5px 5px #111;
 }
 
+.box-about {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+}
+
 .box-area {
   display:grid;
   margin:0.5em;
@@ -146,9 +157,20 @@ p {
   padding: 0.4em;
 }
 
-.ed{
-  margin:0em;
-  padding:0.5em;
+
+
+.fa {
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: calc(0.75em + 2vw);
+}
+
+.fa-linkedin{
+  background-color: #007bb5;
+}
+
+.fa-github {
+  background-color: #111;
 }
 
 .nav{
@@ -162,6 +184,10 @@ p {
 }
 .nav-item{
     margin:0.5em;
+}
+
+.pic {
+
 }
 
 .section-title {
@@ -275,9 +301,7 @@ footer {
 
 @media only screen and (max-width: 768px){
     body{
-        color:white;
         font-size:10pt;
-        
     }
     .scattergrid{
         padding:0rem;
