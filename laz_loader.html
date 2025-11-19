@@ -1,22 +1,44 @@
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-loader-laz-component/dist/aframe-loader-laz-component.min.js"></script>
   </head>
   <body>
-    <a-scene>
-      <a-entity
-        id="pointcloud"
-        position="0 0 -50"
-        rotation="270 0 0"
-        scale="1 1 1"
-        classifier
-        lasloader="
-          url: https://rebwhitt.github.io/assets/chunk.laz;
-          pointcloudColoring: classification; 
-        "
-      >
-      </a-entity>
-    </a-scene>
+    <nav class="nav-bar">
+        <ul class="nav">
+            <li class="nav-item">
+                <a href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="./index.html#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a href="./index.html#about">About</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="back-arrow">
+        <a href="./index.html">&larr; Go Back</a>
+    </div>
+    <div class="aframe-container">
+        <a-scene>
+            <a-entity
+                id="pointcloud"
+                position="0 0 -50"
+                rotation="270 0 0"
+                scale="1 1 1"
+                classifier
+                lasloader="
+                url: https://rebwhitt.github.io/assets/chunk.laz;
+                pointcloudColoring: classification; 
+                "
+            >
+            </a-entity>
+        </a-scene>
+    </div>
+
   </body>
 </html>
