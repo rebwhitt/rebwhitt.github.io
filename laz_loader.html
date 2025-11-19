@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-loader-laz-component/dist/aframe-loader-laz-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity
+        id="pointcloud"
+        position="0 0 -50"
+        rotation="270 0 0"
+        scale="1 1 1"
+        classifier
+        lasloader="
+          url: https://rebwhitt.github.io/assets/chunk.laz;
+          pointcloudColoring: classification; 
+        "
+      >
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
