@@ -59,6 +59,8 @@ h3 {
   padding: 0rem;
 }
 
+
+
 .article h3 {
   color:black;
 }
@@ -97,6 +99,11 @@ p {
 .about{
   margin:0em;
   padding:0.5em;
+}
+
+.aframe-container {
+  margin:5rem;
+  background-color: white;
 }
 
 .article {
@@ -157,7 +164,11 @@ p {
   padding: 0.4em;
 }
 
-
+.desc {
+  border-left: 1px;
+  color: black;
+  font-style: italic;
+}
 
 .fa {
   padding: 0.5rem;
